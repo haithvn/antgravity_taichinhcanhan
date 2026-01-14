@@ -48,3 +48,31 @@ npm run dev
 - Nâng cấp giao diện Dashboard: Biểu đồ màu sắc trực quan (Xanh/Đỏ), animation mượt mà.
 - Thiết kế lại trang Lịch sử giao dịch dạng bảng.
 - Sửa lỗi hiển thị UI/UX.
+
+## Hướng Dẫn Deploy (Vercel)
+
+Dự án này có thể dễ dàng deploy lên Vercel chỉ với vài bước đơn giản thông qua CLI:
+
+1. **Cài đặt & Login (nếu chưa có):**
+   ```bash
+   npx vercel login
+   ```
+
+2. **Deploy Dự Án:**
+   Chạy lệnh sau tại thư mục gốc của dự án:
+   ```bash
+   npx vercel
+   ```
+
+3. **Cấu Hình (Lần đầu tiên):**
+   Trả lời các câu hỏi của Vercel CLI như sau:
+   - `Set up and deploy?` → **y**
+   - `Which scope?` → **[Chọn tài khoản của bạn]**
+   - `Link to existing project?` → **n**
+   - `Project details` → Giữ mặc định (Enter để đồng ý).
+   - `Project settings (Build Command, Output Directory)` → **n** (Vercel tự động nhận diện Vite).
+
+4. **Kết Quả:**
+   Sau khi hoàn tất, Vercel sẽ cung cấp đường dẫn truy cập (ví dụ: `https://thuchicanhan-xyz.vercel.app`).
+
+> **Lưu ý:** Để cập nhật phiên bản mới sau khi sửa code, chỉ cần chạy lại lệnh `npx vercel --prod`.

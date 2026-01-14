@@ -105,9 +105,9 @@ const Dashboard = ({ transactions, income, expense, balance }: DashboardProps) =
                                 <RechartsTooltip
                                     cursor={{ fill: 'rgba(0,0,0,0.04)', rx: 4 }}
                                     contentStyle={{ border: 'none', borderRadius: '12px', boxShadow: '0 8px 16px rgba(0,0,0,0.1)', padding: '12px' }}
-                                    formatter={(value: number) => [
-                                        <span key="val" style={{ color: value > 0 ? '#34c38f' : '#f46a6a', fontWeight: 'bold' }}>
-                                            {formatCurrency(value)}
+                                    formatter={(value: number | undefined) => [
+                                        <span key="val" style={{ color: (value || 0) > 0 ? '#34c38f' : '#f46a6a', fontWeight: 'bold' }}>
+                                            {formatCurrency(value || 0)}
                                         </span>,
                                         'Số tiền'
                                     ]}
