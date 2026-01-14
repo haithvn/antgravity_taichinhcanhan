@@ -1,0 +1,190 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply font-sans bg-body text-primary antialiased leading-normal;
+  }
+}
+
+@layer components {
+
+  /* Layout */
+  .layout-wrapper {
+    @apply flex h-screen overflow-hidden;
+  }
+
+  .sidebar {
+    @apply w-[250px] bg-sidebar flex flex-col transition-transform duration-300 z-50;
+  }
+
+  .sidebar-header {
+    @apply h-[70px] flex items-center justify-center bg-white/5;
+  }
+
+  .sidebar-brand {
+    @apply text-white text-xl font-bold uppercase tracking-widest text-center truncate px-2;
+  }
+
+  .sidebar-menu {
+    @apply flex-1 p-4 overflow-y-auto;
+  }
+
+  .menu-title {
+    @apply text-sidebar text-xs font-semibold uppercase mb-2 mt-4 ml-4;
+  }
+
+  .menu-item {
+    @apply flex items-center gap-4 px-5 py-3 text-gray-400 no-underline text-sm rounded transition-all duration-300 cursor-pointer w-full bg-transparent border-none hover:text-white;
+  }
+
+  .menu-item.active {
+    @apply text-white bg-white/10;
+  }
+
+  /* Main Content */
+  .main-content {
+    @apply flex-1 flex flex-col min-w-0;
+  }
+
+  .header {
+    @apply h-[70px] bg-surface flex items-center justify-between px-6 shadow-sm z-40;
+  }
+
+  .header-left,
+  .header-right {
+    @apply flex items-center gap-4;
+  }
+
+  .search-bar {
+    @apply flex items-center bg-input px-4 py-2 rounded-full w-60 hidden md:flex;
+  }
+
+  .search-input {
+    @apply border-none bg-transparent outline-none ml-2 w-full text-primary text-sm;
+  }
+
+  .content-body {
+    @apply flex-1 overflow-y-auto p-6;
+  }
+
+  .container {
+    @apply max-w-[1400px] mx-auto;
+  }
+
+  /* Components */
+  .card {
+    @apply bg-surface rounded shadow-card p-6 h-full flex flex-col;
+  }
+
+  .card-header {
+    @apply flex justify-between items-center mb-4;
+  }
+
+  .card-title {
+    @apply text-base font-semibold text-primary uppercase;
+  }
+
+  .card-body {
+    @apply flex-1 relative;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply px-6 py-3 rounded font-semibold text-sm transition-all duration-200 inline-flex items-center justify-center gap-2 cursor-pointer border-none uppercase tracking-wide;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white shadow-md hover:bg-primary-hover hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:shadow-sm;
+  }
+
+  .btn-icon {
+    @apply bg-transparent border-none cursor-pointer text-secondary p-1 flex items-center justify-center hover:text-primary transition-colors;
+  }
+
+  /* Toggle Buttons */
+  .btn-toggle {
+    @apply p-3 rounded border border-transparent font-medium transition-all text-center cursor-pointer w-full;
+  }
+
+  .btn-toggle.active {
+    @apply shadow-sm;
+  }
+
+  .btn-toggle-primary {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .btn-toggle-danger {
+    @apply bg-danger text-white;
+  }
+
+  .btn-toggle-success {
+    @apply bg-success text-white;
+  }
+
+  .btn-toggle-default {
+    @apply bg-input text-secondary hover:bg-gray-200;
+  }
+
+  /* Forms */
+  .form-group {
+    @apply mb-4 flex flex-col gap-2;
+  }
+
+  .form-label {
+    @apply text-sm font-semibold text-primary;
+  }
+
+  .form-control {
+    @apply w-full px-4 py-2.5 bg-input border border-transparent rounded text-primary text-sm transition-all focus:bg-surface focus:border-primary focus:ring-2 focus:ring-primary/10 outline-none;
+  }
+
+  textarea.form-control {
+    @apply resize-y min-h-[100px];
+  }
+
+  /* Sidebar Collapsed */
+  .sidebar.collapsed {
+    @apply w-[70px];
+  }
+
+  .sidebar.collapsed .sidebar-brand {
+    @apply text-xs overflow-hidden;
+  }
+
+  .sidebar.collapsed .menu-title,
+  .sidebar.collapsed .menu-item span {
+    @apply hidden;
+  }
+
+  .sidebar.collapsed .menu-item {
+    @apply justify-center px-3;
+  }
+
+  /* Mobile Sidebar */
+  .sidebar-overlay {
+    @apply hidden fixed inset-0 bg-black/50 z-40;
+  }
+
+  .sidebar-overlay.open {
+    @apply block;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      @apply fixed h-full -translate-x-full;
+    }
+
+    .sidebar.open {
+      @apply translate-x-0;
+    }
+  }
+}
+
+/* Utilities not covered by Tailwind or custom semantic mappings */
+@layer utilities {
+  .dashboard-grid {
+    @apply grid grid-cols-12 gap-6;
+  }
+}
