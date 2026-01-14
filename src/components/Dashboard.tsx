@@ -81,18 +81,42 @@ const Dashboard = ({ transactions, income, expense, balance }: DashboardProps) =
                     <div className="card-header">
                         <h4 className="card-title">Tổng quan tài chính</h4>
                     </div>
-                    <div className="card-body" style={{ height: '350px' }}>
+                    <div style={{ height: '350px', padding: '1.5rem' }}>
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={statsData} barSize={40}>
-                                <CartesianGrid strokeDasharray="3 3" vertical={false} opacity={0.3} />
-                                <XAxis dataKey="name" axisLine={false} tickLine={false} />
-                                <YAxis axisLine={false} tickLine={false} />
-                                <RechartsTooltip
-                                    cursor={{ fill: 'rgba(0,0,0,0.02)' }}
-                                    contentStyle={{ border: 'none', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
-                                    formatter={(value?: number) => formatCurrency(value || 0)}
+                            <BarChart data={statsData} barSize={60} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} opacity={0.1} />
+                                <XAxis
+                                    dataKey="name"
+                                    axisLine={false}
+                                    tickLine={false}
+                                    tick={{ fill: '#6c757d', fontSize: 13 }}
+                                    dy={10}
                                 />
-                                <Bar dataKey="value" fill="var(--primary)" radius={[4, 4, 0, 0]} />
+                                <YAxis
+                                    axisLine={false}
+                                    tickLine={false}
+                                    tick={{ fill: '#6c757d', fontSize: 12 }}
+                                    tickFormatter={(value) => {
+                                        if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`;
+                                        if (value >= 1000) return `${(value / 1000).toFixed(0)}k`;
+                                        return value;
+                                    }}
+                                />
+                                <RechartsTooltip
+                                    cursor={{ fill: 'rgba(0,0,0,0.04)', rx: 4 }}
+                                    contentStyle={{ border: 'none', borderRadius: '12px', boxShadow: '0 8px 16px rgba(0,0,0,0.1)', padding: '12px' }}
+                                    formatter={(value: number) => [
+                                        <span key="val" style={{ color: value > 0 ? '#34c38f' : '#f46a6a', fontWeight: 'bold' }}>
+                                            {formatCurrency(value)}
+                                        </span>,
+                                        'Số tiền'
+                                    ]}
+                                />
+                                <Bar dataKey="value" radius={[6, 6, 0, 0]} animationDuration={1500}>
+                                    {statsData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={entry.name === 'Thu nhập' ? '#34c38f' : '#f46a6a'} />
+                                    ))}
+                                </Bar>
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
@@ -104,7 +128,7 @@ const Dashboard = ({ transactions, income, expense, balance }: DashboardProps) =
                     <div className="card-header">
                         <h4 className="card-title">Cơ cấu chi tiêu</h4>
                     </div>
-                    <div className="card-body" style={{ height: '350px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ height: '350px', padding: '1.5rem', position: 'relative' }}>
                         {expenseByCategory.length > 0 ? (
                             <ResponsiveContainer width="100%" height="100%">
                                 <PieChart>
@@ -126,7 +150,7 @@ const Dashboard = ({ transactions, income, expense, balance }: DashboardProps) =
                                 </PieChart>
                             </ResponsiveContainer>
                         ) : (
-                            <div className="text-secondary">Chưa có dữ liệu chi tiêu</div>
+                            <div className="flex h-full items-center justify-center text-secondary">Chưa có dữ liệu chi tiêu</div>
                         )}
                     </div>
                 </div>

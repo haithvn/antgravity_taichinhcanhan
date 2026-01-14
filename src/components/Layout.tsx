@@ -30,7 +30,7 @@ const Layout = ({ children, activeTab, onTabChange }: LayoutProps) => {
             <aside className={`sidebar ${isMobileSidebarOpen ? 'open' : ''} ${isDesktopSidebarCollapsed ? 'collapsed' : ''}`}>
                 {/* Brand */}
                 <div className="sidebar-header">
-                    <h1 className="sidebar-brand">{isDesktopSidebarCollapsed ? 'SC' : 'Skote Clone'}</h1>
+                    <h1 className="sidebar-brand">{isDesktopSidebarCollapsed ? 'MF' : 'My Finance'}</h1>
                 </div>
 
                 <div className="sidebar-menu">

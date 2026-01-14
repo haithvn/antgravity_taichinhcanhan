@@ -1,8 +1,16 @@
 import type { Transaction } from '../types';
 import useLocalStorage from './useLocalStorage';
+import { mockTransactions } from '../utils/mockData';
+import { useEffect } from 'react';
 
 export const useTransactions = () => {
     const [transactions, setTransactions] = useLocalStorage<Transaction[]>('transactions', []);
+
+    useEffect(() => {
+        if (transactions.length === 0) {
+            setTransactions(mockTransactions);
+        }
+    }, []);
 
     const addTransaction = (transaction: Transaction) => {
         setTransactions((prev) => [transaction, ...prev]);

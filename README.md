@@ -1,73 +1,50 @@
-# React + TypeScript + Vite
+# My Finance - Quản Lý Tài Chính Cá Nhân
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ứng dụng quản lý tài chính cá nhân được xây dựng với React, TypeScript và TailwindCSS.
 
-Currently, two official plugins are available:
+![Dashboard Preview](https://github.com/haithvn/antgravity_taichinhcanhan/blob/master/screenshot.png) *(Cần cập nhật đường dẫn ảnh thực tế)*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tính Năng Chính
+- **Dashboard Tổng Quan**: 
+    - Xem số dư, tổng thu nhập, tổng chi tiêu.
+    - Biểu đồ cột (Bar Chart) trực quan hóa thu/chi.
+    - Biểu đồ tròn (Pie Chart) phân tích cơ cấu chi tiêu.
+- **Quản Lý Giao Dịch**:
+    - Thêm mới giao dịch (Thu/Chi) với danh mục, số tiền, ghi chú.
+    - Xem lịch sử giao dịch dưới dạng bảng chi tiết.
+    - Xóa giao dịch.
+- **Dữ Liệu Mẫu**: Tự động hiển thị dữ liệu mẫu để trải nghiệm ngay.
 
-## React Compiler
+## Công Nghệ Sử Dụng
+- **Frontend**: React 19, TypeScript
+- **Build Tool**: Vite
+- **Styling**: TailwindCSS v4
+- **Charts**: Recharts
+- **Icons**: Phosphor React
+- **Utils**: UUID, date-fns
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Cài Đặt và Chạy Dự Án
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone dự án:
+```bash
+git clone https://github.com/haithvn/antgravity_taichinhcanhan.git
+cd antgravity_taichinhcanhan
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Cài đặt dependencies:
+```bash
+npm install
 ```
+
+3. Chạy server phát triển:
+```bash
+npm run dev
+```
+
+4. Truy cập `http://localhost:5173` để sử dụng.
+
+## Cập Nhật Gần Đây
+- Đổi tên ứng dụng thành "My Finance".
+- Nâng cấp giao diện Dashboard: Biểu đồ màu sắc trực quan (Xanh/Đỏ), animation mượt mà.
+- Thiết kế lại trang Lịch sử giao dịch dạng bảng.
+- Sửa lỗi hiển thị UI/UX.
