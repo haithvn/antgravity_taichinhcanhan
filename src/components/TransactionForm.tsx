@@ -73,7 +73,7 @@ const TransactionForm = ({ onAdd, onCancel }: TransactionFormProps) => {
                             onChange={(e) => setAmount(e.target.value)}
                             placeholder="Nhập số tiền..."
                             className="form-control"
-                            style={{ paddingLeft: '16px', fontWeight: 600 }}
+                            style={{ paddingLeft: '16px', paddingRight: '50px', fontWeight: 600 }}
                             required
                             min="0"
                         />
@@ -113,16 +113,11 @@ const TransactionForm = ({ onAdd, onCancel }: TransactionFormProps) => {
                                 type="button"
                                 onClick={() => setCategoryId(cat.id)}
                                 className={`
-                                    btn-toggle 
-                                    ${categoryId === cat.id ? 'active' : ''}
+                                    btn-toggle text-sm p-2 border transition-all
+                                    ${categoryId === cat.id
+                                        ? 'bg-primary text-white border-primary shadow-sm'
+                                        : 'bg-surface text-secondary border-[#eff2f7] hover:bg-gray-50'}
                                 `}
-                                style={{
-                                    fontSize: '0.85rem',
-                                    padding: '8px',
-                                    backgroundColor: categoryId === cat.id ? 'var(--primary)' : 'var(--bg-surface)',
-                                    color: categoryId === cat.id ? 'white' : 'var(--text-secondary)',
-                                    border: `1px solid ${categoryId === cat.id ? 'var(--primary)' : '#eff2f7'}`
-                                }}
                             >
                                 {cat.name}
                             </button>
